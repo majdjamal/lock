@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Secure Login Demo</title>
+  <style>
+
+    .intro {
+      background-color: #ffcb99;
+      color:  black;
+      text-align: center;
+      overflow: scroll;
+      height: 10%;
+    }
+    
+    .lock {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 30%;
+      margin-top: 5%;
+    }
+
+    .sout{
+      margin-top: 20px;
+      text-align: center;
+
+    }
+
+    #sout .button{
+      background-color: #daf4fe;
+      height: 40px;
+      width: 70px;
+      border:  0;
+      cursor: pointer;
+    }
+</style>
+<script>
+
+</script>
+
+</head>
+<body> 
+  <div id="intro" class=intro>
+  <h3 id="welcome"> Welcome !</h3>
+  </div>
+  <img id="lock" class="lock" src="https://i.ibb.co/2vNTCq3/lock-open.png">
+  <br>
+  <div id="sout" class ="sout">
+  <form action="/signout" method="post">
+
+    <input id="button" class ="button" type="submit" name="Sign out" value="Sign out">
+  </form>
+</div>
+<script>
+   const params = new URLSearchParams(location.search);
+   var header = document.getElementById("welcome");
+
+   if (params.has('user')) {
+      user = params.get('registration')
+      header.innerHTML = 'Welcome ' + user + '!'
+    }
+    
+</script>
+</body>
+</html>

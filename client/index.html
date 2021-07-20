@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Secure Login Demo</title>
+  <style>
+    .information {
+      text-align:center; 
+      margin-top: 5%;
+
+    }
+    #login .button{
+      margin-top: 20px;
+      background-color: #daf4fe;
+      height: 40px;
+      width: 70px;
+      border:  0;
+      cursor: pointer;
+    }
+
+    .intro {
+      background-color: #ffcb99;
+      color:  black;
+      text-align: center;
+      overflow: scroll;
+      height: 10%;
+    }
+    .warning {
+      color:  red;
+    }
+</style>
+
+</head>
+<body> 
+  <div id="intro" class=intro>
+  <h3> Secure Login Demostration </h3>
+  </div>
+  <div id="information" class="information">
+  <form action = "/authentication" method = "post" id="login">
+  <a> Username </a>
+  <br>
+  <input id="userID" name="userID" type="text"> 
+  <br>
+  <a> Password </a>
+  <br>
+  <input id="pass" name="pass" type="password"> 
+  <br>
+  <input type="submit" id="button" class="button" name="button" value="Login" >
+  <input type="submit" id="button" class="button" name="button" value="Register">
+  </form>
+  <h5 id="warning" class = "warning"> </h5>
+</div>
+<script>
+   const params = new URLSearchParams(location.search);
+   var feedback = document.getElementById("warning");
+   if (params.has('error')) {
+      error = params.get('error')
+      if (error === '101'){
+        feedback.innerHTML = "Enter a valid username! It should consist of only alphabets and numbers."
+      }
+      else if (error === '102'){
+        feedback.innerHTML = "Enter a valid password! It should include alphabets, numbers, and at least 5 characters."
+      }
+      else if (error === '103'){
+        feedback.innerHTML = "Wrong password! Try again!"
+      } 
+      else if (error === '104'){
+        feedback.innerHTML = "Username already exists!"
+      }
+    }
+
+</script>
+</body>
+</html>
